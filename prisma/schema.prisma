@@ -13,8 +13,44 @@ datasource db {
 }
 
 model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String?
+  id    String     @id @default(uuid()) 
+  email String?  @unique
+  provider  Provider?
+  isAnonymous Boolean @default(false)
+
+  wishes Wish[]
   
 } 
+
+model Wish {
+  id String @id @default(uuid())
+  slug String @unique
+  title String
+  message String @db.Text
+  image1 String?
+  image2 String?
+  category WishCategory
+  guestId String?
+  expiresAt DateTime?
+  createdAt DateTime @default(now())
+   updatedAt   DateTime @updatedAt
+
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([slug])
+  @@index([userId])
+  @@index([guestId])
+}
+
+enum WishCategory {
+  Birthday
+  Anniversary
+  Friendship
+  Love
+  Festival
+}
+
+enum Provider {
+  Google
+}
