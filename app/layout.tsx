@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {TooltipProvider} from '@/components/ui/tooltip'
+import Navbar from "@/components/Navbar";
+import { Providers } from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,14 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><TooltipProvider>{children}</TooltipProvider></body>
+      <body className="min-h-full flex flex-col"><TooltipProvider>
+        
+        <Providers>
+          <Navbar/>
+           {children}
+          </Providers>
+       
+        </TooltipProvider></body>
     </html>
   );
 }
