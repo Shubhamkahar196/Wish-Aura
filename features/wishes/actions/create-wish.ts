@@ -1,10 +1,13 @@
 "use server"
 
-import { db } from "@/lib/db";
+import { connectDb } from "@/lib/db";
 import { wishSchema } from "../schemas/wish-schema";
 import { generateSlug } from "../utils/generate-slug";
+import {Wish} from '../../../models/wish.models'
 
 export async function createWish(formData: unknown) {
+    await connectDb();
+
   const validationFields = wishSchema.safeParse(formData);
 
   if (!validationFields.success) {
@@ -18,18 +21,18 @@ export async function createWish(formData: unknown) {
   const data = validationFields.data;
   const slug = generateSlug(data.title);
 
-  const wish = await db.wish.create({
-    data: {
-      title: data?.title,
-      message: data?.message,
-      category: data?.category,
-      slug
-    }
-  });
+
+    const wish = await Wish.create({
+  title: data.title,
+  message: data.message,
+  category: data.category,
+  slug,
+});
+  
 
   return { 
     success: true, 
     message: "Validation successful", 
-    wish 
+    slug: wish.slug
   };
 }

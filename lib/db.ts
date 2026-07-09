@@ -1,12 +1,16 @@
-import { PrismaClient } from "./generated/prisma/client";
+import mongoose from 'mongoose'
 
-const globalForPrisma = globalThis as {
-  prisma?: PrismaClient;
-};
+export const connectDb = async()=>{
+    try {
+        
+        if(!process.env.DATABASE_URL){
+throw new Error("Mongodb url is missing")
+        }
 
-export const db =
-  globalForPrisma.prisma ?? new PrismaClient();
-
-if (process.env.NODE_ENV !== "production") {
-  globalForPrisma.prisma = db;
+        const connectionInstannce = await mongoose.connect(process.env.DATABASE_URL);
+        console.log("Mongodb is connected HOST DB !!",connectionInstannce.connection.host)
+    } catch (error) {
+        console.log("Mongodb connection failure",error)
+        process.exit(1);
+    }
 }
