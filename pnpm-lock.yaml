@@ -38,6 +38,9 @@ importers:
       dotenv:
         specifier: ^17.4.2
         version: 17.4.2
+      framer-motion:
+        specifier: ^12.42.2
+        version: 12.42.2(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       generate:
         specifier: ^0.14.0
         version: 0.14.0

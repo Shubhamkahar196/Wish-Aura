@@ -19,6 +19,7 @@
     "date-fns": "^4.4.0",
     "dev": "^0.1.5",
     "dotenv": "^17.4.2",
+    "framer-motion": "^12.42.2",
     "generate": "^0.14.0",
     "lucide-react": "^1.23.0",
     "migrate": "^2.1.0",

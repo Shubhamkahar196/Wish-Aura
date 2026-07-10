@@ -4,17 +4,15 @@ import { getWish } from "@/features/wishes/actions/get-wish";
 import WishCard from "@/features/wishes/components/wish-card";
 
 type Props = {
-    params: Promise<{
-        slug: string;
-    }>;
-}
+  params: Promise<{
+    slug: string;
+  }>;
+};
 
-export default async function WishPage ({
-    params,
-}:Props){
-    const {slug} = await params;
+export default async function WishPage({ params }: Props) {
+  const { slug } = await params;
 
-    const wish = await getWish(slug);
+  const wish = await getWish(slug);
 
   if (!wish) {
     notFound();
@@ -26,6 +24,7 @@ export default async function WishPage ({
         title={wish.title}
         message={wish.message}
         category={wish.category}
+        image={wish.images?.[0]?.url}
       />
     </main>
   );
