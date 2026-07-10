@@ -15,6 +15,8 @@ export const wishSchema = z.object({
     .max(1000, "Message can't exceed 1000 characters"),
 
   category: z.enum(wishCategories),
+
+  image: z.string().optional(),
 });
 
 export type WishSchema = z.infer<typeof wishSchema>;

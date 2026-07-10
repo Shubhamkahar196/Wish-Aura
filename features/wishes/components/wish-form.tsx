@@ -1,128 +1,9 @@
-// "use client";
-
-// import { useForm } from "react-hook-form";
-// import { zodResolver } from "@hookform/resolvers/zod";
-
-// import { wishSchema, type WishSchema } from "../schemas/wish-schema";
-// import { wishCategories } from "../constants";
-
-// import { Input } from "@/components/ui/input";
-// import { Textarea } from "@/components/ui/textarea";
-// import { Button } from "@/components/ui/button";
-// import { createWish } from "../actions/create-wish";
-// import { useRouter } from "next/navigation";
-
-// export default function WishForm() {
-//   const router = useRouter();
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors, isSubmitting },
-//   } = useForm<WishSchema>({
-//     resolver: zodResolver(wishSchema),
-
-//     defaultValues: {
-//       title: "",
-//       message: "",
-//       category: "Birthday",
-//     },
-    
-//   });
-
-//   async function onSubmit(data: WishSchema) {
-//     const response = await createWish(data)
-    
-//     if(!response.success)return;
-//     router.push(`/w/${response.slug}`)
-//     console.log(response)
-//   }
-
-//   return (
-//     <form
-//       onSubmit={handleSubmit(onSubmit)}
-//       className="mx-auto max-w-2xl space-y-6"
-//     >
-//       {/* Title */}
-//       <div>
-//         <label className="mb-2 block text-sm font-medium">
-//           Title
-//         </label>
-
-//         <Input
-//           placeholder="Happy Birthday Rahul 🎉"
-//           {...register("title")}
-//         />
-
-//         {errors.title && (
-//           <p className="mt-2 text-sm text-red-500">
-//             {errors.title.message}
-//           </p>
-//         )}
-//       </div>
-
-//       {/* Message */}
-//       <div>
-//         <label className="mb-2 block text-sm font-medium">
-//           Message
-//         </label>
-
-//         <Textarea
-//           rows={6}
-//           placeholder="Write your wishes..."
-//           {...register("message")}
-//         />
-
-//         {errors.message && (
-//           <p className="mt-2 text-sm text-red-500">
-//             {errors.message.message}
-//           </p>
-//         )}
-//       </div>
-
-//       {/* Category */}
-//       <div>
-//         <label className="mb-2 block text-sm font-medium">
-//           Category
-//         </label>
-
-//         <select
-//           {...register("category")}
-//           className="border-input bg-background flex h-10 w-full rounded-md border px-3 py-2 text-sm"
-//         >
-//           {wishCategories.map((category) => (
-//             <option
-//               key={category}
-//               value={category}
-//             >
-//               {category}
-//             </option>
-//           ))}
-//         </select>
-
-//         {errors.category && (
-//           <p className="mt-2 text-sm text-red-500">
-//             {errors.category.message}
-//           </p>
-//         )}
-//       </div>
-
-//       <Button
-//         className="w-full"
-//         disabled={isSubmitting}
-//       >
-//         {isSubmitting ? "Creating..." : "Create Wish"}
-//       </Button>
-//     </form>
-//   );
-// }
-
-
-
 "use client";
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useState } from "react";
+import ImageUpload from "@/features/uploads/image-upload";
 import { wishSchema, type WishSchema } from "../schemas/wish-schema";
 import { wishCategories } from "../constants";
 
@@ -134,6 +15,8 @@ import { useRouter } from "next/navigation";
 
 export default function WishForm() {
   const router = useRouter();
+const [imageUrl, setImageUrl] = useState("");
+const [uploading, setUploading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -148,7 +31,10 @@ export default function WishForm() {
   });
 
   async function onSubmit(data: WishSchema) {
-    const response = await createWish(data);
+   const response = await createWish({
+  ...data,
+  image: imageUrl,
+});
     
     if (!response.success) return;
     router.push(`/w/${response.slug}`);
@@ -179,7 +65,7 @@ export default function WishForm() {
             Title
           </label>
           <Input
-            placeholder="Happy Birthday Rahul 🎉"
+            placeholder="Happy Birthday Shubham 🎉"
             className="h-11 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary"
             {...register("title")}
           />
@@ -237,12 +123,15 @@ export default function WishForm() {
             </p>
           )}
         </div>
-
+<ImageUpload
+  onUpload={setImageUrl}
+  onUploading={setUploading}
+/>
         {/* Submit Button */}
         <Button
           type="submit"
           className="w-full h-11 text-base font-medium shadow-md transition-all duration-200 hover:opacity-90 active:scale-[0.98]"
-          disabled={isSubmitting}
+          disabled={isSubmitting || uploading}
         >
           {isSubmitting ? (
             <span className="flex items-center gap-2 justify-center">

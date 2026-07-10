@@ -22,17 +22,25 @@ export async function createWish(formData: unknown) {
   const slug = generateSlug(data.title);
 
 
-    const wish = await Wish.create({
+  const wish = await Wish.create({
   title: data.title,
   message: data.message,
   category: data.category,
   slug,
-});
-  
 
-  return { 
-    success: true, 
-    message: "Validation successful", 
-    slug: wish.slug
-  };
+  images: data.image
+    ? [
+        {
+          url: data.image,
+          publicId: "",
+        },
+      ]
+    : [],
+});
+
+return {
+  success: true,
+  message: "Validation successful",
+  slug: wish.slug,
+};
 }

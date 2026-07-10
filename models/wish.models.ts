@@ -39,10 +39,19 @@ const WishSchema = new Schema(
       default: "Classic",
     },
 
-    images: {
-      type: [String],
-      default: [],
-    },
+    images: [
+      {
+        url: {
+          type: String,
+          required: true,
+        },
+
+        publicId: {
+          type: String,
+          default: "",
+        },
+      },
+    ],
 
     guestId: {
       type: String,
@@ -70,4 +79,5 @@ const WishSchema = new Schema(
   }
 );
 
-export const Wish = models.Wish || model("Wish", WishSchema);
+export const Wish =
+  models.Wish || model("Wish", WishSchema);
