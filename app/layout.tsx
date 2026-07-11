@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import {TooltipProvider} from '@/components/ui/tooltip'
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { Providers } from "./providers";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +32,19 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><TooltipProvider>
-        
-        <Providers>
-          <Navbar/>
-           {children}
+      <body className="min-h-full flex flex-col">
+        <TooltipProvider>
+          <Providers>
+            <Navbar />
+
+            {/* Layout padding so fixed header/footer never overlap content */}
+            <div className="pt-20 pb-16 flex-1 w-full">{children}</div>
+
+            <Footer />
           </Providers>
-       
-        </TooltipProvider></body>
+        </TooltipProvider>
+      </body>
     </html>
   );
 }
+
