@@ -15,8 +15,13 @@ import { useRouter } from "next/navigation";
 
 export default function WishForm() {
   const router = useRouter();
-const [imageUrl, setImageUrl] = useState("");
-const [uploading, setUploading] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+  const [uploading] = useState(false);
+
+
+  // Note: keep UI-only changes. Uploading state is managed inside ImageUpload.
+
+
   const {
     register,
     handleSubmit,
@@ -31,21 +36,49 @@ const [uploading, setUploading] = useState(false);
   });
 
   async function onSubmit(data: WishSchema) {
-   const response = await createWish({
-  ...data,
-  image: imageUrl,
-});
-    
+    const response = await createWish({
+      ...data,
+      image: imageUrl,
+    });
+
     if (!response.success) return;
-    router.push(`/w/${response.slug}`);
+    router.push(`/w/${response.slug}?created=true`);
     console.log(response);
   }
 
+
   return (
-    <div className="w-full min-h-screen flex items-center justify-center p-4 sm:p-6 bg-gradient-to-br from-background via-muted/50 to-background">
+    <div className="relative w-full min-h-screen flex items-center justify-center p-4 sm:p-6 overflow-hidden">
+      {/* Gradient + glow background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-purple-200/30 via-pink-200/20 to-blue-200/20" />
+      <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-pink-400/25 blur-3xl" />
+      <div className="absolute -bottom-28 -right-20 h-80 w-80 rounded-full bg-blue-400/25 blur-3xl" />
+
+      {/* Floating birthday balloons (purely decorative) */}
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="absolute left-4 top-24 h-10 w-10 rounded-full bg-pink-300/70 blur-[0.5px] animate-[float_6s_ease-in-out_infinite]" />
+        <div className="absolute right-8 top-32 h-12 w-12 rounded-full bg-purple-300/60 animate-[float_7s_ease-in-out_infinite]" />
+        <div className="absolute left-10 top-[45%] h-9 w-9 rounded-full bg-blue-300/55 animate-[float_8s_ease-in-out_infinite]" />
+        <div className="absolute right-14 top-[58%] h-14 w-14 rounded-full bg-rose-300/55 animate-[float_9s_ease-in-out_infinite]" />
+        <div className="absolute left-1/2 top-[20%] h-6 w-6 -translate-x-1/2 rounded-full bg-amber-200/70 animate-[float_5s_ease-in-out_infinite]" />
+      </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0% { transform: translateY(0); opacity: 0.85; }
+          50% { transform: translateY(-18px); opacity: 1; }
+          100% { transform: translateY(0); opacity: 0.85; }
+        }
+        .animate-[float_6s_ease-in-out_infinite] { animation-duration: 6s; }
+        .animate-[float_7s_ease-in-out_infinite] { animation-duration: 7s; }
+        .animate-[float_8s_ease-in-out_infinite] { animation-duration: 8s; }
+        .animate-[float_9s_ease-in-out_infinite] { animation-duration: 9s; }
+        .animate-[float_5s_ease-in-out_infinite] { animation-duration: 5s; }
+      `}</style>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-xl space-y-6 rounded-2xl border bg-card p-6 sm:p-8 shadow-xl backdrop-blur-sm transition-all duration-300 hover:shadow-2xl"
+        className="w-full max-w-xl space-y-6 rounded-[28px] border border-white/30 bg-white/60 dark:bg-zinc-900/40 p-6 sm:p-8 shadow-[0_20px_60px_-20px_rgba(244,114,182,0.45)] backdrop-blur-xl transition-all duration-300 hover:shadow-[0_28px_80px_-26px_rgba(59,130,246,0.35)]"
       >
         {/* Header Section */}
         <div className="space-y-2 text-center sm:text-left">
@@ -123,10 +156,11 @@ const [uploading, setUploading] = useState(false);
             </p>
           )}
         </div>
-<ImageUpload
-  onUpload={setImageUrl}
-  onUploading={setUploading}
-/>
+        <ImageUpload
+          onUpload={setImageUrl}
+        />
+
+
         {/* Submit Button */}
         <Button
           type="submit"
