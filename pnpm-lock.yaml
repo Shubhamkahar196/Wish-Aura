@@ -23,6 +23,9 @@ importers:
       axios:
         specifier: ^1.18.1
         version: 1.18.1
+      canvas-confetti:
+        specifier: ^1.9.4
+        version: 1.9.4
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -44,6 +47,9 @@ importers:
       generate:
         specifier: ^0.14.0
         version: 0.14.0
+      gsap:
+        specifier: ^3.15.0
+        version: 3.15.0
       lucide-react:
         specifier: ^1.23.0
         version: 1.23.0(react@19.2.4)
@@ -96,6 +102,9 @@ importers:
       '@tailwindcss/postcss':
         specifier: ^4
         version: 4.3.2
+      '@types/canvas-confetti':
+        specifier: ^1.9.0
+        version: 1.9.0
       '@types/node':
         specifier: ^20
         version: 20.19.43
@@ -913,6 +922,9 @@ packages:
 
   '@tybys/wasm-util@0.10.3':
     resolution: {integrity: sha512-F3fo1MYrRJYL3zER0OUOmkutjr1Vp23m7OsSgp7nq4SP6OqX6C/56XFIPAl5bt3zaBRjmW7SGz3u/6LwFpYcOg==}
+
+  '@types/canvas-confetti@1.9.0':
+    resolution: {integrity: sha512-aBGj/dULrimR1XDZLtG9JwxX1b4HPRF6CX9Yfwh3NvstZEm1ZL7RBnel4keCPSqs1ANRu1u2Aoz9R+VmtjYuTg==}
 
   '@types/estree@1.0.9':
     resolution: {integrity: sha512-GhdPgy1el4/ImP05X05Uw4cw2/M93BCUmnEvWZNStlCzEKME4Fkk+YpoA5OiHNQmoS7Cafb8Xa3Pya8m1Qrzeg==}
@@ -1826,6 +1838,9 @@ packages:
 
   caniuse-lite@1.0.30001803:
     resolution: {integrity: sha512-g/uHREV2ZpK9qMalCsWaxmA6ol+DX8GYhuf3T40RKoP+oL7vhRJh8LNt73PCjpnR6l14FzfPrB5Yux4PKm2meg==}
+
+  canvas-confetti@1.9.4:
+    resolution: {integrity: sha512-yxQbJkAVrFXWNbTUjPqjF7G+g6pDotOUHGbkZq2NELZUMDpiJ85rIEazVb8GTaAptNW2miJAXbs1BtioA251Pw==}
 
   capture-stack-trace@1.0.2:
     resolution: {integrity: sha512-X/WM2UQs6VMHUtjUDnZTRI+i1crWteJySFzr9UpGoQa4WQffXVTTXuekjl7TjZRlcF2XfjgITT0HxZ9RnxeT0w==}
@@ -3069,6 +3084,9 @@ packages:
   group-array@0.3.4:
     resolution: {integrity: sha512-YAmNsgsi1uQ7Ai3T4FFkMoskqbLEUPRajAmrn8FclwZQQnV98NLrNWjQ3n2+i1pANxdO3n6wsNEkKq5XrYy0Ow==}
     engines: {node: '>=0.10.0'}
+
+  gsap@3.15.0:
+    resolution: {integrity: sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==}
 
   gulp-sourcemaps@1.6.0:
     resolution: {integrity: sha512-NjRy6+Qb5K1xbwOvPviD3uA4KSq2zsalPL+4vxPQPuL+kKzHjXJL10/kLaESic3LmBto8VIBHr3gIN3F9AjnhA==}
@@ -6878,6 +6896,8 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
+  '@types/canvas-confetti@1.9.0': {}
+
   '@types/estree@1.0.9': {}
 
   '@types/json-schema@7.0.15': {}
@@ -8233,6 +8253,8 @@ snapshots:
   camelcase@4.1.0: {}
 
   caniuse-lite@1.0.30001803: {}
+
+  canvas-confetti@1.9.4: {}
 
   capture-stack-trace@1.0.2: {}
 
@@ -9889,6 +9911,8 @@ snapshots:
       kind-of: 3.2.2
       split-string: 1.0.1
       union-value: 1.0.1
+
+  gsap@3.15.0: {}
 
   gulp-sourcemaps@1.6.0:
     dependencies:
