@@ -570,7 +570,7 @@ export default function WishCard({
   }, [title, message]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen py-20 px-4 bg-gradient-to-br from-zinc-50 via-white to-rose-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-black overflow-x-hidden relative">
+    <div className="flex items-center justify-center min-h-screen py-20 px-4 bg-linear-to-br from-zinc-50 via-white to-rose-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-black overflow-x-hidden relative">
       
       {/* Background Bokeh Particles */}
       <div ref={particlesRef} className="absolute inset-0 pointer-events-none overflow-hidden select-none z-0 max-h-screen">
@@ -585,7 +585,7 @@ export default function WishCard({
         {/* Ambient Neon Glowing Backlight */}
         <div 
           ref={glowRef} 
-          className="absolute -inset-2 rounded-3xl opacity-50 dark:opacity-30 blur-2xl bg-gradient-to-r from-rose-500 via-purple-500 to-amber-400 z-0 pointer-events-none scale-102"
+          className="absolute -inset-2 rounded-3xl opacity-50 dark:opacity-30 blur-2xl bg-linear-to-r from-rose-500 via-purple-500 to-amber-400 z-0 pointer-events-none scale-102"
         />
 
         {/* MAIN CARD CONTAINER */}
@@ -602,7 +602,7 @@ export default function WishCard({
             <div className="text-center sm:text-left space-y-1 flex-1">
               <h1
                 ref={titleRef}
-                className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-rose-500 via-pink-600 to-amber-500 bg-clip-text text-transparent drop-shadow-sm pb-1"
+                className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-linear-to-r from-rose-500 via-pink-600 to-amber-500 bg-clip-text text-transparent drop-shadow-sm pb-1"
               >
                 {title}
               </h1>
@@ -616,7 +616,7 @@ export default function WishCard({
             </div>
 
             {/* Action Button */}
-            <div className="flex-shrink-0">
+            <div className="shrink-0">
               <button
                 type="button"
                 onClick={handleCopyOrShareLink}
@@ -678,7 +678,7 @@ export default function WishCard({
                   className="max-h-60 sm:max-h-72 w-full object-contain mx-auto transition-transform duration-700"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black/10 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
           )}
