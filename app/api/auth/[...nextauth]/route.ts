@@ -8,7 +8,7 @@ const handler = NextAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
   ],
-  // Ensures NextAuth can correctly sign/encrypt session cookies and return JSON endpoints.
+  // error solve by adding this error-/api/auth/_log
   secret: process.env.NEXTAUTH_SECRET,
 });
 

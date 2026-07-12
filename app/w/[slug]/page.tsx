@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { getWish } from "@/features/wishes/actions/get-wish";
+// import WishCard from "@/features/wishes/components/wish-card";
 import WishCard from "@/features/wishes/components/wish-card";
 
 type Props = {
