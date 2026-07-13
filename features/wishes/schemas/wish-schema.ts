@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { wishCategories } from "../constants";
+import { wishCategories, wishThemes } from "../constants";
 
 export const wishSchema = z.object({
   title: z
@@ -17,6 +17,7 @@ export const wishSchema = z.object({
   category: z.enum(wishCategories),
 
   image: z.string().optional(),
+  theme:z.enum(wishThemes).default("classic")
 });
 
 export type WishSchema = z.infer<typeof wishSchema>;

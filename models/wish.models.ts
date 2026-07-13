@@ -35,8 +35,9 @@ const WishSchema = new Schema(
 
     theme: {
       type: String,
-      enum: ["Classic", "Elegant", "Party"],
-      default: "Classic",
+        enum: ["classic", "party", "elegant", "simple"],
+  default: "classic",
+
     },
 
     images: [

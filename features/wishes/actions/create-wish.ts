@@ -8,8 +8,7 @@ import {Wish} from '../../../models/wish.models'
 export async function createWish(formData: unknown) {
   await connectDb();
 
-  // Fix: when using server actions, formData often arrives as FormData,
-  // but zod expects plain strings. Convert without changing your business logic.
+
   const parsedInput: unknown = (() => {
     if (formData instanceof FormData) {
       const obj: Record<string, unknown> = {};
@@ -39,6 +38,7 @@ export async function createWish(formData: unknown) {
     title: data.title,
     message: data.message,
     category: data.category,
+    theme:data.theme,
     slug,
     images: data.image
       ? [

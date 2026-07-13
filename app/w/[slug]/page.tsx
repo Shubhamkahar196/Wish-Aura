@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getWish } from "@/features/wishes/actions/get-wish";
 // import WishCard from "@/features/wishes/components/wish-card";
 import WishCard from "@/features/wishes/components/wish-card";
+import TemplateRenderer from "@/features/templates/template-render";
 
 type Props = {
   params: Promise<{
@@ -25,8 +26,17 @@ export default async function WishPage({ params }: Props) {
         title={wish.title}
         message={wish.message}
         category={wish.category}
+        theme={wish.theme}
         image={wish.images?.[0]?.url}
       />
+
+      <TemplateRenderer
+  theme={wish.theme}
+  title={wish.title}
+  message={wish.message}
+  category={wish.category}
+  image={wish.image}
+/>
     </main>
   );
 }

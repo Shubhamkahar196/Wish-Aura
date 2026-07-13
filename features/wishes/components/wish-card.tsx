@@ -1,4 +1,6 @@
 import BirthdayClassic from "@/features/templates/birthday/birthday-classic";
+import BirthdayElegant from "@/features/templates/birthday/birthday-elegant";
+import BirthdayParty from "@/features/templates/birthday/birthday-party";
 import BirthdaySimple from "@/features/templates/birthday/birthday-simple";
 
 type WishCardProps = {
