@@ -255,8 +255,8 @@ export default function BirthdayParty({
         {/* MAIN CARD CONTAINER */}
         <div
           ref={containerRef}
-          style={{ perspective: 1000 }}
-          // className="w-full rounded-[2rem] border border-white/60 dark:border-zinc-800/60 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-3xl p-6 sm:p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08),_inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4),_inset_0_1px_0_rgba(255,255,255,0.05)] space-y-8 relative overflow-hidden z-10 transition-all duration-500 hover:shadow-[0_40px_80px_-12px_rgba(244,63,94,0.12)] hover:-translate-y-1"
+          // style={{ perspective: 1000 }}
+                    // className="w-full rounded-[2rem] border border-white/60 dark:border-zinc-800/60 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-3xl p-6 sm:p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08),_inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4),_inset_0_1px_0_rgba(255,255,255,0.05)] space-y-8 relative overflow-hidden z-10 transition-all duration-500 hover:shadow-[0_40px_80px_-12px_rgba(244,63,94,0.12)] hover:-translate-y-1"
           className="w-full rounded-[2rem] border border-white/60 dark:border-zinc-800/60 bg-white/40 dark:bg-zinc-900/40 backdrop-blur-3xl p-6 sm:p-10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.08),inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.05)] space-y-8 relative overflow-hidden z-10 transition-all duration-500 hover:shadow-[0_40px_80px_-12px_rgba(244,63,94,0.12)] hover:-translate-y-1"
         >
           <div className="absolute top-4 left-6 text-xl opacity-40 animate-pulse">✨</div>

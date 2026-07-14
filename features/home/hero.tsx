@@ -2,7 +2,11 @@ import React from 'react'
 
 const hero = () => {
   return (
-    <div>hero</div>
+    <div>
+      <h1>WishAura</h1>
+       <h2>Create Beautiful Wishes</h2>
+       <p>That People will never Forget.</p>
+    </div>
   )
 }
 
